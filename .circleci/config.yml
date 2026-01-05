@@ -24,8 +24,9 @@ jobs:
           paths:
             - ~/.gradle
           key: gradle-{{ checksum "build.gradle.kts" }} - {{ checksum "app/build.gradle.kts" }}
-      - android/run-tests:
-        test_command: ./gradlew testDebugUnitTest
+      - run:
+          name: Run Unit Test
+          command: ./gradlew testDebugUnitTest
 
 workflows:
   run-unit-test:
