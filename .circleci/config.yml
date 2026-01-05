@@ -21,8 +21,9 @@ jobs:
           name: Resolve all the dependencies
           command: ./gradlew dependencies
       - save_cache:
-          - ~/.gradle
-        key: gradle-{{ checksum "build.gradle.kts" }} - {{ checksum "app/build.gradle.kts" }}
+          paths:
+            - ~/.gradle
+          key: gradle-{{ checksum "build.gradle.kts" }} - {{ checksum "app/build.gradle.kts" }}
       - android/run-tests:
         test_command: ./gradlew testDebugUnitTest
 
